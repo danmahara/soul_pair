@@ -1,0 +1,122 @@
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ff6b6b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #ff6b6b;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ffd6d6;
+        }
+
+        .hero {
+            background-image: url('/images/dating.avif');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #ff6b6b;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        } */
