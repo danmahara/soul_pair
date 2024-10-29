@@ -1,8 +1,11 @@
 <?php
 
 if (!function_exists('createSlug')) {
-    function createSlulg($string)
+    function createSlug($firstName, $lastName)
     {
+        // Combine first name and last name into one string
+        $string = $firstName . ' ' . $lastName;
+
         // Replace non-letter or non-digit characters with a dash
         $string = preg_replace('~[^\pL\d]+~u', '-', $string);
 

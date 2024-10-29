@@ -1,8 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Validator;
 
 class UserController extends Controller
 {
@@ -17,17 +20,28 @@ class UserController extends Controller
         return view('website.users.create');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $userRequest)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        // dd($userRequest->all());
+        $data = $userRequest->validated();
 
-        User::create($request->all());
-        return redirect()->route('website.users.index')->with('success', 'User created successfully.');
+        // Create a slug using first and last name
+        $data['username'] = createSlug($data['first_name'], $data['last_name']);
+
+        // Hash the password before storing
+        $data['password'] = bcrypt($data['password']);
+
+        // Create the user
+        try {
+            User::create($data);
+            // Redirect with success message
+            return redirect()->route('website.home')->with('success', 'User created successfully.');
+        } catch (Exception $e) {
+            // Handle any exceptions that occur during user creation
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]); // Store the error message
+        }
     }
+
 
     public function show(User $user)
     {
