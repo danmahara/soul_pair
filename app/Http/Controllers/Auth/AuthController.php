@@ -11,6 +11,13 @@ use Validator;
 
 class AuthController extends Controller
 {
+
+    public function showLoginForm()
+    {
+        return view('website.auth.login');
+    }
+
+
     public function login(Request $request)
     {
 
@@ -31,7 +38,14 @@ class AuthController extends Controller
         }
 
     }
-    public function store(UserRequest $userRequest)
+
+
+    public function showRegisterForm()
+    {
+        return view('website.auth.signup');
+    }
+
+    public function register(UserRequest $userRequest)
     {
         $data = $userRequest->validated();
 

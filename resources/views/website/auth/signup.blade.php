@@ -1,12 +1,12 @@
-@extends('website.layouts.default')
+@extends('components.guest_partials.default')
 @section('content')
 
 
 
 <div class="max-w-md mx-auto p-6 border border-gray-300 rounded-lg mt-8 mb-8">
     <h1 class="text-2xl text-center font-bold mb-6">Register</h1>
-    @include('website.layouts.alerts')
-    <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+    @include('components.alerts')
+    <form action="{{ route('register.submit') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <!-- Step 1: Basic Information -->

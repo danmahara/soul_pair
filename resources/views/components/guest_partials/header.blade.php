@@ -9,7 +9,7 @@
             <li><a href="#" class="text-white hover:underline">About</a></li>
             <li><a href="#" class="text-white hover:underline">Contact</a></li>
         </ul>
-        <a href="{{ route('users.create') }}"
+        <a href="{{ route('register.submit') }}"
             class="hidden md:inline-block bg-white py-2 px-4 rounded-full font-semibold transition hover:bg-red-100 text-[#ff6b6b]">Join
             Now</a>
 
@@ -27,7 +27,7 @@
                 <li><a href="#hero" class="text-white block">Features</a></li>
                 <li><a href="#" class="text-white block">About</a></li>
                 <li><a href="#" class="text-white block">Contact</a></li>
-                <li><a href="{{ route('users.create') }}"
+                <li><a href="{{ route('register.submit') }}"
                         class="bg-white py-2 px-4 rounded-full font-semibold text-[#ff6b6b] block">Join Now</a></li>
             </ul>
         </div>
