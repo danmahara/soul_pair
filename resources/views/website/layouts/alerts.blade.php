@@ -1,4 +1,4 @@
-<script>
+{{-- <script>
     @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}", 'Success', {
             closeButton: true,
@@ -34,6 +34,28 @@
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             toastr.warning("{{ $error }}", 'Validation Error', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: "3000"
+            });
+        @endforeach
+    @endif
+</script> --}}
+
+
+<script>
+    @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}", 'Success', {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+            timeOut: "3000"
+        });
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error("{{ $error }}", 'Validation Error', {
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",

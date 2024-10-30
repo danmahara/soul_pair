@@ -13,24 +13,26 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('role_id')->nullable();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
+            $table->string('first_name'); // required
+            $table->string('last_name'); // required
+            $table->string('username'); // required
+            $table->string('email')->unique(); // required
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password'); // required
             $table->rememberToken();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->geometry('location')->nullable(); // For latitude and longitude
+            $table->string('address')->nullable();
             $table->text('bio')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->enum('account_status', ['active', 'banned']);
-            $table->enum('subscription_status', ['free', 'premium']);
+            $table->enum('account_status', ['active', 'banned'])->default('active'); // Default value
+            $table->enum('subscription_status', ['free', 'premium'])->default('free'); // Default value
             $table->string('provider')->nullable(); // For social login provider
             $table->string('provider_id')->nullable(); // Unique ID from social login providers
             $table->softDeletes();
             $table->timestamps();
         });
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
