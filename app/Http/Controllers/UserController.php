@@ -9,40 +9,7 @@ use Validator;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('website.users.index', compact('users'));
-    }
-
-    public function create()
-    {
-        return view('website.users.create');
-    }
-
-    // public function store(UserRequest $userRequest)
-    // {
-    //     // dd($userRequest->all());
-    //     $data = $userRequest->validated();
-
-    //     // Create a slug using first and last name
-    //     $data['username'] = createSlug($data['first_name'], $data['last_name']);
-
-    //     // Hash the password before storing
-    //     $data['password'] = bcrypt($data['password']);
-
-    //     // Create the user
-    //     try {
-    //         User::create($data);
-    //         // Redirect with success message
-    //         return redirect()->route('website.home')->with('success', 'User created successfully.');
-    //     } catch (Exception $e) {
-    //         // Handle any exceptions that occur during user creation
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]); // Store the error message
-    //     }
-    // }
-
-
+   
     public function show(User $user)
     {
         return view('website.users.show', compact('user'));

@@ -1,7 +1,7 @@
-@extends('website.layouts.default')
+@extends('components.guest_partials.default')
 @section('content')
 
-@include('website.layouts.alerts')
+@include('components.alerts')
 <section class="hero bg-cover bg-center h-[50vh] md:h-screen" style="background-image: url('/images/dating.avif');">
     <div class="flex items-center justify-center h-full bg-black bg-opacity-50 px-4">
         <div class="text-center text-white max-w-xs md:max-w-lg">
