@@ -8,7 +8,7 @@
             <h1 class="text-3xl md:text-5xl font-bold mb-2 md:mb-4">Find Your Perfect Match</h1>
             <p class="text-sm md:text-lg mb-4 md:mb-6">Discover connections that matter with SoulPair. Join today
                 and start your journey to love.</p>
-            <a href="#"
+            <a href="{{route('login')}}"
                 class="bg-[#ff6b6b] py-2 px-4 md:px-6 rounded-full text-white font-semibold transition hover:bg-red-600">Get
                 Started</a>
         </div>

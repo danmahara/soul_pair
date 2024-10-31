@@ -5,16 +5,16 @@
 
 <body class="bg-gray-100 font-poppins text-gray-800">
 
-    <div class="page">
+    <div class="min-h-screen flex flex-col"> {{-- Ensure this div takes full height --}}
 
-        {{-- header --}}
+        {{-- Header --}}
         @include('components.auth_partials.header')
 
-        <div>
-            {{-- start main content --}}
-            @yield('content')
+        <div class="flex-grow"> {{-- Make main content flexible to push footer down --}}
+            @yield('content') {{-- This is where your content should render --}}
         </div>
 
+        {{-- Footer --}}
         @include('components.guest_partials.footer')
 
     </div>

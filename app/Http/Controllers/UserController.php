@@ -9,7 +9,10 @@ use Validator;
 
 class UserController extends Controller
 {
-   
+
+    public function dashboard(){
+        return view('website.dashboard.dashboard');
+    }
     public function show(User $user)
     {
         return view('website.users.show', compact('user'));
