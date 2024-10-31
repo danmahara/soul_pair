@@ -15,7 +15,7 @@
         </div>
 
         {{-- Footer --}}
-        @include('components.guest_partials.footer')
+        {{-- @include('components.guest_partials.footer') --}}
 
     </div>
 
