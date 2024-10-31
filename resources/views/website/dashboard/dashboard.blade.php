@@ -1,12 +1,6 @@
 @extends('components.auth_partials.default')
 @section('content')
 
-@php
-use Carbon\Carbon;
-
-$dob = Auth::user()->date_of_birth; // Get the date of birth
-$age = Carbon::parse($dob)->age; // Calculate age
-@endphp
 
 <!-- Main Content -->
 <div class="flex flex-col md:flex-row h-screen">
@@ -37,28 +31,27 @@ $age = Carbon::parse($dob)->age; // Calculate age
             <h2 class="text-2xl font-semibold">Welcome, {{ Auth::user()->first_name }} !</h2>
         </div>
 
-        <div class="  bg-white p-6 rounded-lg shadow-lg mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <img src="{{ asset('images/couple.png') }}" class="w-full h-auto  object-contain rounded-lg"
+        <div id="userContainer" class="bg-white p-6 rounded-lg shadow-lg mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <img id="userImage" src="{{ asset('images/couple.png') }}" class="w-full h-auto object-contain rounded-lg"
                 alt="Profile image">
             <div class="flex flex-col justify-between">
                 <div>
-                    <p class="text-2xl font-semibold mb-2">
-                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
-                        <span class="ml-5 text-lg">{{ $age }}</span>
-                    </p>
-                    <p class="text-gray-600 mb-4">{{ Auth::user()->address }}
-                        [display here display (miles away)] </p>
+                    <p id="userName" class="text-2xl font-semibold mb-2"></p>
+                    <p id="userAddress" class="text-gray-600 mb-4"></p>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="flex space-x-4">
-                        <button
+                        <button onclick="showPreviousUser()"
+                            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition duration-200">Previous</button>
+                        <button onclick="showNextUser()"
                             class="bg-[#bf8d76] text-white px-4 py-2 rounded-lg hover:bg-[#a66b5d] transition duration-200">Pass</button>
-                        <button
+                        <button onclick="showNextUser()"
                             class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">Like</button>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
 
     <!-- Friends List on Right Side -->
@@ -95,5 +88,53 @@ $age = Carbon::parse($dob)->age; // Calculate age
         document.getElementById("sidebar").style.width = "300px";
     }
 
+</script>
+{{-- Pass users to JavaScript --}}
+<script>
+    const users = @json($users); // Laravel's way to pass PHP data to JS
+    let currentIndex = 0;
+
+    // Function to display the current user
+    function displayUser(index) {
+        if (index < 0 || index >= users.length) {
+            console.log("Index out of bounds:", index);
+            document.getElementById('userContainer').innerHTML = "<p>No more users to display.</p>";
+            return;
+        }
+
+        const user = users[index];
+        console.log("Displaying user at index:", index, user);
+        document.getElementById('userImage').src = "{{ asset('images/couple.png') }}"; // Update to user-specific image if needed
+        document.getElementById('userName').textContent = `${user.first_name} ${user.last_name} (${user.age} years)`;
+        document.getElementById('userAddress').textContent = `${user.address} (X miles away)`; // Calculate "miles away" if needed
+    }
+
+    // Show the next user
+    function showNextUser() {
+        if (currentIndex < users.length - 1) {
+            currentIndex++;
+            console.log("Next user index:", currentIndex);
+            displayUser(currentIndex);
+        } else {
+            currentIndex=0
+            displayUser(currentIndex)
+        }
+    }
+
+    // Show the previous user
+    function showPreviousUser() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            console.log("Previous user index:", currentIndex);
+            displayUser(currentIndex);
+        } else {
+            // alert("This is the first user.");
+            currentIndex=users.length-1;
+            displayUser(currentIndex);
+        }
+    }
+
+    // Initial display of the first user
+    displayUser(currentIndex);
 </script>
 @endsection

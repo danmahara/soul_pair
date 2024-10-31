@@ -4,23 +4,38 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Exception;
+use Faker\Provider\ar_EG\Company;
 use Illuminate\Http\Request;
 use Validator;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
 
-    public function dashboard(){
-        return view('website.dashboard.dashboard');
-    }
-    public function show(User $user)
+    protected $user;
+
+    public function __construct(User $model)
     {
-        return view('website.users.show', compact('user'));
+        $this->user = $model;
     }
 
-    public function edit(User $user)
+    public function dashboard()
     {
-        return view('website.users.edit', compact('user'));
+        return view('website.dashboard.dashboard');
+    }
+
+    public function getUsers()
+    {
+        $users = $this->user->inRandomOrder()->get(); // Retrieve users in random order
+
+        // Calculate age for each user
+        $users = $users->map(function ($user) {
+            $dob = $user->date_of_birth; // Get the date of birth
+            $user->age = Carbon::parse($dob)->age; // Calculate and assign age to the user object
+            return $user; // Return the modified user object
+        });
+
+        return view('website.dashboard.dashboard', compact('users'));
     }
 
     public function update(Request $request, User $user)
@@ -39,4 +54,6 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('website.users.index')->with('success', 'User deleted successfully.');
     }
+
+
 }

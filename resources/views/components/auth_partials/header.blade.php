@@ -1,8 +1,8 @@
-<nav class="bg-white shadow p-3 flex justify-between items-center">
+<nav class="bg-[#ff6b6b] shadow p-3 flex justify-between items-center">
     <!-- Left Section -->
     <div class="flex items-center space-x-2">
         <a href="/dashboard">
-        <img src="{{asset('images/soul_logo.jpg')}}" alt="Logo" class="w-12 h-12 rounded-full  ">
+            <img src="{{asset('images/soul_logo.jpg')}}" alt="Logo" class="w-12 h-12 rounded-full  ">
 
         </a>
         <div class="hidden sm:flex items-center bg-gray-100 p-2 rounded-full">
@@ -15,22 +15,35 @@
     </div>
 
     <!-- Middle Section -->
-    <div class="hidden sm:flex space-x-16 md:space-x-16  justify-evenly ">
-        <button class="text-blue-600">
+    <div class="hidden sm:flex space-x-16 md:space-x-16 justify-evenly">
+        <a href="/dashboard" class="nav-item text-blue-600 hover:text-blue-700 relative group"
+            onclick="setActive(this)">
             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
             </svg>
-        </button>
+            <span
+                class="tooltip absolute left-1/2 transform -translate-x-1/2 -translate-y-[-20px] bg-gray-800 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Home
+            </span>
+        </a>
 
-        <button class="text-gray-500  hover:text-blue-600">
-            <i class="fas fa-user-friends text-xl "></i>
-        </button>
+        <a href="#" class="nav-item text-white hover:text-blue-600 relative group" onclick="setActive(this)">
+            <i class="fas fa-user-friends text-xl"></i>
+            <span
+                class="tooltip absolute left-1/2 transform -translate-x-1/2 -translate-y-[-50px] bg-gray-800 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Friends
+            </span>
+        </a>
 
-        <button class="text-gray-500 hover:text-blue-600">
-            <i class="fas fa-heart text-2xl "></i>
-        </button>
+        <a href="#" class="nav-item text-white hover:text-blue-600 relative group" onclick="setActive(this)">
+            <i class="fas fa-heart text-2xl"></i>
+            <span
+                class="tooltip absolute left-1/2 transform -translate-x-1/2 -translate-y-[-50px] bg-gray-800 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Favorites
+            </span>
+        </a>
 
-        <button class="text-gray-500 hover:text-blue-600">
+        <a href="#" class="nav-item text-white hover:text-blue-600 relative group" onclick="setActive(this)">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,10 +51,14 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 20h0a2 2 0 002-2h-4a2 2 0 002 2z" />
             </svg>
-
-
-        </button>
+            <span
+                class="tooltip absolute left-1/2 transform -translate-x-1/2 -translate-y-[-20px] bg-gray-800 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Notifications
+            </span>
+        </a>
     </div>
+
+
 
     <!-- Right Section -->
     <div class="flex items-center space-x-4">
@@ -98,4 +115,20 @@ document.addEventListener('click', function(event) {
     }
 });
 
+</script>
+
+
+<script>
+    function setActive(selected) {
+        // Remove the active classes from all items
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => {
+            item.classList.remove('text-blue-600', 'hover:text-blue-700');
+            item.classList.add('text-white'); // Change to the original color
+        });
+
+        // Add the active classes to the selected item
+        selected.classList.add('text-blue-600', 'hover:text-blue-700');
+        selected.classList.remove('text-white'); // Remove original color
+    }
 </script>
