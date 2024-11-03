@@ -21,7 +21,9 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('website.dashboard.dashboard');
+
+        $users = $this->getUsers();
+        return view('website.dashboard.dashboard',compact('users'));
     }
 
     public function getUsers()

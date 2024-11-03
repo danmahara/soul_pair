@@ -36,7 +36,7 @@ class AuthController extends Controller
 
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard')->with(['success' => "Logged in successfully."]);
+            return redirect('dashboard')->with(['success' => "Logged in successfully."]);
         } else {
             // Return back with an error if authentication fails
             return redirect()->back()->withErrors(['login' => 'Invalid email or password'])->withInput();
